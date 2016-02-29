@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+
+    <script type="text/javascript" src="javascripts/jquery-2.1.0.min.js"></script>
+    
+    <title>ajaxdebounce by ronency</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>ajaxdebounce</h1>
+        <h2></h2>
+
+        <section id="downloads">
+          <a href="https://github.com/ronency/ajaxDebounce/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/ronency/ajaxDebounce/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/ronency/ajaxDebounce" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h2><a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>jQuery.ajaxDebounce.js</h2>
+        
+        <h3><a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>What?</h3>
+        <p>
+          ajaxDebounce is a jquery plugin that enable debouncing ajax calls, and verifies that only the latest 'success' callback actually runs
+        </p>
+
+        <h3><a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Why?</h3>
+        <p>
+          For cases in which you need to combine both 'debounce' & 'ajax'.
+          <br />
+          For example: If a certain user action triggers an AJAX call (heavy action), which in turn updates the DOM with the result. If you want the AJAX call to fire only after a [configurable-delay] miliseconds of "non-active" threshold, and then again, once an AJAX call returns, you want to make sure you update the DOM only for the <b>latest</b> call, a thing that can get tricky due to the nature of AJAX (remember what the first 'A' in AJAX is for?).
+          <br />
+          Well, that's what ajaxDebounce.js is for!!!!
+        </p>
+
+        <h3><a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>How?</h3>
+        <p>
+          Basically it is a wrapper for jQuery.ajax which provides the "debounce" functionality, and calls the AJAX callbacks only when needed- if it's the latest call that was triggers, while dropping callbacks for AJAX call that are "no longer the latest".
+        </p>
+        
+        <h3>Usage example:</h3>
+        <pre>
+          <code>
+            var $input = $('#my-input');
+            
+            // A dynamic function that constucts the relevant data for the AJAX call.
+            var getAjaxObject = function(){ 
+              return {
+                url: '/do/something/cool/with/it',
+                data: {value: $input.val()},
+                success: function(data){
+                  // do whatever with 'data', it's promised to be only the latest call 
+                  // that was triggered only after the delay of 'non-active' threshold.
+                },
+                error: function(xhr, status, error){}
+              };
+            }
+            $input.keyup(function(){$.ajaxDebounce({delay: 100, ajax: getAjaxObject()});});
+            ------------------------^^^^^^^^^^^^^^^-------------------^^^^^^^^^^^^^^^------------
+            -----------------------magic-happens-here--------------------and-here----------------
+          </code>
+        </pre>
+		
+      </section>
+    </div>
+  </body>
+</html>
