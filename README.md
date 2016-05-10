@@ -16,5 +16,6 @@ Now after we triggered the AJAX call after the short pause, the user may continu
 ### ajaxDebounce.js to the rescue!!!
 
 jQuery.ajaxDebounce.js wraps together two mechanisms:
-1. Debouncing
+
+1. Debouncing the frequent action using a configurable threshold.
 2. Verifying that only the **latest** AJAX success is executed, and that an earlier calls are dropped regardless of the order they came back.
