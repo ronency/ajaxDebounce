@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+$.ajaxDebounce({
+    delay: 100,
+    ajax: getAjaxOptions()
+})
 <html>
   <head>
     <meta charset='utf-8'>
@@ -7,7 +11,9 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
 
-    <script type="text/javascript" src="javascripts/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="javascripts/jquery-2.1.0.min.js"></script>,
+    event: '',
+    element: null
     
     <title>ajaxdebounce by ronency</title>
   </head>
@@ -70,6 +76,13 @@
     $input.keyup(function(){$.ajaxDebounce({delay: 100, ajax: getAjaxObject()});});
     ------------------------^^^^^^^^^^^^^^^-------------------^^^^^^^^^^^^^^^------------
     -----------------------magic-happens-here--------------------and-here----------------
+
+    $.ajaxDebounce({
+      delay: 100,
+      ajax: getAjaxOptions(),
+      event: '',
+      element: null
+    })
           </code>
         </pre>
 		
