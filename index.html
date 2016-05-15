@@ -59,30 +59,30 @@ $.ajaxDebounce({
         <h3>Usage example:</h3>
         <pre>
           <code>
-    var $input = $('#my-input');
-    
-    // A dynamic function that constucts the relevant data for the AJAX call.
-    var getAjaxObject = function(){ 
-      return {
-        url: '/do/something/cool/with/it',
-        data: {value: $input.val()},
-        success: function(data){
-          // do whatever with 'data', it's promised to be only the latest call 
-          // that was triggered only after the delay of 'non-active' threshold.
-        },
-        error: function(xhr, status, error){}
-      };
-    }
-    $input.keyup(function(){$.ajaxDebounce({delay: 100, ajax: getAjaxObject()});});
-    ------------------------^^^^^^^^^^^^^^^-------------------^^^^^^^^^^^^^^^------------
-    -----------------------magic-happens-here--------------------and-here----------------
+  var $input = $('#my-input');
+  
+  // A dynamic function that constucts the relevant data for the AJAX call.
+  var getAjaxObject = function(){ 
+    return {
+      url: '/do/something/cool/with/it',
+      data: {value: $input.val()},
+      success: function(data){
+        // do whatever with 'data', it's promised to be only the latest call 
+        // that was triggered only after the delay of 'non-active' threshold.
+      },
+      error: function(xhr, status, error){}
+    };
+  }
+  $input.keyup(function(){$.ajaxDebounce({delay: 100, ajax: getAjaxObject()});});
+  ------------------------^^^^^^^^^^^^^^^-------------------^^^^^^^^^^^^^^^------------
+  -----------------------magic-happens-here--------------------and-here----------------
 
-    $.ajaxDebounce({
-      delay: 100,
-      ajax: getAjaxOptions(),
-      event: '',
-      element: null
-    })
+  $.ajaxDebounce({
+    delay: 100,
+    ajax: getAjaxOptions(),
+    event: '',
+    element: null
+  })
           </code>
         </pre>
 		
